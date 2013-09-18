@@ -71,10 +71,10 @@ if [ ! -d qt5 ]; then
 fi
 
 cd qt5
-git checkout release
+git checkout stable
 git clean -dxf
 git reset --hard HEAD
-git submodule foreach "git checkout release"
+git submodule foreach "git checkout stable"
 git submodule foreach "git clean -dxf"
 git submodule foreach "git reset --hard HEAD"
 git fetch || exit 1
@@ -89,7 +89,7 @@ echo ==========================================================
 export QTDIR=$NEW_QTDIR
 export PATH=$QTDIR/bin:$PATH
 
-./configure -opensource -confirm-license -no-pch -nomake examples -nomake demos -nomake tests -no-gtkstyle -nomake translations -qt-zlib -qt-sql-sqlite $BUILD_TYPE $INSTALL_TYPE
+./configure -opensource -confirm-license -no-pch -nomake examples -nomake tests -no-gtkstyle -qt-zlib -qt-sql-sqlite $BUILD_TYPE $INSTALL_TYPE
 
 cd qtbase && make $THREADS && if [ ! $DEVELOPER_BUILD ]; then make install; fi && cd ..
 if [ $? -ne 0 ] ; then
