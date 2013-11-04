@@ -89,22 +89,28 @@ echo ==========================================================
 export QTDIR=$NEW_QTDIR
 export PATH=$QTDIR/bin:$PATH
 
-./configure -opensource -confirm-license -no-pch -nomake examples -nomake tests -no-gtkstyle -qt-zlib -qt-sql-sqlite $BUILD_TYPE $INSTALL_TYPE
+./configure -opensource -confirm-license -no-pch -nomake examples -no-gtkstyle -qt-zlib -qt-sql-sqlite $BUILD_TYPE $INSTALL_TYPE
 
-cd qtbase && make $THREADS && if [ ! $DEVELOPER_BUILD ]; then make install; fi && cd ..
+make $THREADS && if [ ! $DEVELOPER_BUILD ]; then make install; fi && cd ..
 if [ $? -ne 0 ] ; then
-  echo FAIL: building qtbase
+  echo FAIL: building Qt.
   exit 1
 fi
 
-for module in $QT5_MODULES
-do
-  cd $module && qmake && make $THREADS && if [ ! $DEVELOPER_BUILD ]; then make install; fi && cd ..
-  if [ $? -ne 0 ] ; then
-    echo FAIL: building $module.
-    exit 1
-  fi
-done
+#cd qtbase && make $THREADS && if [ ! $DEVELOPER_BUILD ]; then make install; fi && cd ..
+#if [ $? -ne 0 ] ; then
+#  echo FAIL: building qtbase
+#  exit 1
+#fi
+#
+#for module in $QT5_MODULES
+#do
+#  cd $module && qmake && make $THREADS && if [ ! $DEVELOPER_BUILD ]; then make install; fi && cd ..
+#  if [ $? -ne 0 ] ; then
+#    echo FAIL: building $module.
+#    exit 1
+#  fi
+#done
 
 echo
 echo Build Completed.
