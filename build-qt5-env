@@ -1,3 +1,3 @@
-QT_WEEKLY_REV=Qt-5.2.0-qtwe
-WEEKLY_QT5_HASH="v5.2.0"
+QT_WEEKLY_REV=Qt-5.4.0-branch
+WEEKLY_QT5_HASH="48cd6bb5003945233c7824132f97483f2c34e435"
 QT5_MODULES="qtxmlpatterns qtdeclarative qtquickcontrols qtscript qtquick1 qttools qtx11extras"

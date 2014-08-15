@@ -72,10 +72,10 @@ if [ ! -d qt5 ]; then
 fi
 
 cd qt5
-git checkout stable
+git checkout 5.4
 git clean -dxf
 git reset --hard HEAD
-git submodule foreach "git checkout stable"
+git submodule foreach "git checkout 5.4"
 git submodule foreach "git clean -dxf"
 git submodule foreach "git reset --hard HEAD"
 git fetch || exit 1
